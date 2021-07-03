@@ -13,6 +13,7 @@ export function Header() {
   const isWide = useBreakpointValue({
     base: false,
     lg: true,
+    md: true,
   });
 
   return (

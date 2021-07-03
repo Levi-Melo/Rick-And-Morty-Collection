@@ -16,7 +16,6 @@ import { FavoritesProvider } from "../contexts/FavoritesContext";
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={client}>
-      <ReactQueryDevtools />
       <ChakraProvider theme={theme}>
         <ModalProvider>
           <FavoritesProvider>
