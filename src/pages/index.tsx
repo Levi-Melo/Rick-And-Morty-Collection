@@ -84,7 +84,7 @@ export default function charactersList() {
                   {favorites ? (
                     <CharactersContent characters={data.characters} />
                   ) : (
-                    <Text>Você ainda não possui favoritos</Text>
+                    <Text>You don't have favorites yet.</Text>
                   )}
                 </>
               ) : (
