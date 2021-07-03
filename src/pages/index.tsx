@@ -26,7 +26,7 @@ export default function charactersList() {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
 
-  const { isFavoritesOpen, toggleFavorites } = useFavorites();
+  const { isFavoritesOpen, toggleFavorites, favorites } = useFavorites();
 
   useEffect(() => {
     if (isFavoritesOpen) {
@@ -80,7 +80,13 @@ export default function charactersList() {
                   <Text>The character searched does not exist.</Text>
                 </Flex>
               ) : isFavoritesOpen ? (
-                <CharactersContent characters={data.characters} />
+                <>
+                  {favorites ? (
+                    <CharactersContent characters={data.characters} />
+                  ) : (
+                    <Text>Você ainda não possui favoritos</Text>
+                  )}
+                </>
               ) : (
                 <>
                   <CharactersContent characters={data.characters} />

@@ -15,10 +15,12 @@ interface CardProps {
 export function Card({ name, image, status, planet, id }: CardProps) {
   const { handle } = useModal();
   const { favorites } = useFavorites();
-
-  const isFavorite = favorites.find((characterId: string) => {
-    return characterId == id;
-  });
+  let isFavorite: string;
+  if (favorites) {
+    isFavorite = favorites.find((characterId: string) => {
+      return characterId == id;
+    });
+  }
 
   return (
     <GridItem
@@ -36,7 +38,7 @@ export function Card({ name, image, status, planet, id }: CardProps) {
       <Image src={image} alt={name} borderTopRadius="10" width="max" />
       <Text fontWeight="bold" color="blue.700" mt="2" fontSize="20">
         {name}
-        {isFavorite && (
+        {favorites && isFavorite && (
           <Icon as={RiStarLine} fontSize="20" ml="2" color="green.300" />
         )}
       </Text>
