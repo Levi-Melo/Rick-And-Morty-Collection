@@ -17,6 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <QueryClientProvider client={client}>
       <ChakraProvider theme={theme}>
+        <ReactQueryDevtools />
         <ModalProvider>
           <FavoritesProvider>
             <SearchProvider>
