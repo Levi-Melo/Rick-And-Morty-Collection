@@ -48,9 +48,19 @@ export function CharacterModal() {
     <>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
-        <ModalContent width={["300px", "448px"]} m="auto" bg="gray.700">
+        <ModalContent
+          width={["300px", "448px"]}
+          height={["441px", "312px"]}
+          m="auto"
+          bg="gray.700"
+        >
           {isLoading ? (
-            <Flex align="center" justify="center">
+            <Flex
+              width={["300px", "448px"]}
+              height={["441px", "312px"]}
+              justify="center"
+              align="center"
+            >
               <Spinner />
             </Flex>
           ) : (

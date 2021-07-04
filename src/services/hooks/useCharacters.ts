@@ -168,7 +168,8 @@ export async function getCharacter(
 export function useCharacters(
   page?: number,
   search?: string,
-  isFavoritesOpen?: boolean
+  isFavoritesOpen?: boolean,
+  initialData?: GetCharactersResponse
 ) {
   if (isFavoritesOpen) {
     const favorites = localStorage.getItem(
@@ -180,6 +181,12 @@ export function useCharacters(
   }
   if (search) {
     return useQuery(["character", { search }], () => getCharacter(search));
+  }
+  if (page == 1) {
+    return useQuery(["character", { page }], () => getCharacters(page), {
+      staleTime: 1000 * 60 * 100,
+      initialData: initialData,
+    });
   }
   return useQuery(["character", { page }], () => getCharacters(page), {
     staleTime: 1000 * 60 * 100,

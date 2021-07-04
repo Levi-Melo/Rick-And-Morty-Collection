@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
+import { GetServerSideProps } from "next";
 
 import {
   Box,
@@ -9,7 +11,7 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 
-import { useCharacters } from "../services/hooks/useCharacters";
+import { getCharacters, useCharacters } from "../services/hooks/useCharacters";
 import { useSearch } from "../contexts/SearchContext";
 import { useFavorites } from "../contexts/FavoritesContext";
 
@@ -19,9 +21,8 @@ import { Sidebar } from "../components/Sidebar/Index";
 import { SearchBox } from "../components/Header/SearchBox";
 import { CharactersContent } from "../components/content/CharactersContent";
 import { CharacterModal } from "../components/modal";
-import Head from "next/head";
 
-export default function charactersList() {
+export default function charactersList({ characters, info }) {
   const { value } = useSearch();
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
@@ -38,9 +39,9 @@ export default function charactersList() {
   const { data, isLoading, isFetching, error } = useCharacters(
     page,
     search,
-    isFavoritesOpen
+    isFavoritesOpen,
+    { characters, info }
   );
-
   const isWide = useBreakpointValue({
     base: false,
     lg: true,
@@ -92,7 +93,7 @@ export default function charactersList() {
                 <>
                   <CharactersContent characters={data.characters} />
                   <Box mx="auto" justify="center" align="center" w="max">
-                    {!value && (
+                    {!value && data.info && (
                       <Pagination
                         totalCountOfRegisters={data.info.count}
                         currentPage={page}
@@ -111,3 +112,13 @@ export default function charactersList() {
     </>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { characters, info } = await getCharacters(1);
+  return {
+    props: {
+      characters,
+      info,
+    },
+  };
+};
