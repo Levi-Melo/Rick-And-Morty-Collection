@@ -2,6 +2,7 @@
 
 <div align="center">
 <image src="./public/mockup.png" alt="mockup" width="600">
+</br>
 A Website where you can save all your favorites characters from "Rick And Morty" TV Show 
 </div>
 
