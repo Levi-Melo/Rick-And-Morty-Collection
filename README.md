@@ -1,8 +1,6 @@
-# Rick And Morty Collection
-
 <div align="center">
 <image src="./public/mockup.png" alt="mockup" width="600">
-</br>
+<h1>Rick And Morty Collection</h1>
 A Website where you can save all your favorites characters from "Rick And Morty" TV Show 
 </div>
 
