@@ -16,7 +16,7 @@ export function CharactersContent({ characters }: CharactersContentProps) {
           id={character.id}
           image={character.image}
           name={character.name}
-          planet={character.location.name}
+          gender={character.gender}
           status={character.status}
         />
       ))}

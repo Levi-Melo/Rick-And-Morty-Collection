@@ -9,10 +9,10 @@ interface CardProps {
   image: string;
   name: string;
   status: string;
-  planet: string;
+  gender: string;
 }
 
-export function Card({ name, image, status, planet, id }: CardProps) {
+export function Card({ name, image, status, gender, id }: CardProps) {
   const { handle } = useModal();
   const { favorites } = useFavorites();
   let isFavorite: string;
@@ -54,7 +54,7 @@ export function Card({ name, image, status, planet, id }: CardProps) {
         maxW="90%"
         mx="auto"
       >
-        {planet}
+        {gender}
       </Text>
     </GridItem>
   );
